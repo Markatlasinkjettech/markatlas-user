@@ -7,7 +7,7 @@ import AddUsers from './components/AddUsers';
 import Navbar from './components/Navbar';
 import BlogForm from './components/BlogForm';
 import ManageCourses from './components/CourseManagementStep1';
-
+import DownloadPage from './components/DownloadPage';
 import ManageSubcourses from './components/ManageSubcourses';
 import BlogManagement from './components/BlogManagement';
 import EditBlogForm from './components/EditBlogForm';
@@ -25,6 +25,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route element={<PrivateRoute />}>
           <Route path="/Dashboard" element={<AdminDashboard />} />
+          <Route path="/DownloadPage" element={<DownloadPage />} />
           <Route path="/CourseForm" element={<AddCourseForm />} />
           <Route path="/AddUsers" element={<AddUsers />} />
           <Route path="/BlogForm" element={<BlogForm />} />

@@ -35,6 +35,7 @@ const Navbar = () => {
                 <NavLink to="/AddUsers">Users</NavLink>
                 <NavLink to="/BlogForm">Blog</NavLink>
                 <NavLink to="/MoreAddForm">More</NavLink>
+                <NavLink to="/DownloadPage">CSV</NavLink> {/* Add DownloadPage link */}
               </div>
             </div>
           </div>
@@ -77,6 +78,9 @@ const Navbar = () => {
             </NavLinkMobile>
             <NavLinkMobile to="/MoreAddForm" onClick={toggleMenu}>
               More
+            </NavLinkMobile>
+            <NavLinkMobile to="/DownloadPage" onClick={toggleMenu}> {/* Add DownloadPage link */}
+              CSV
             </NavLinkMobile>
             {/* Logout button for mobile view */}
             <div className="px-2 pt-2 pb-3">
