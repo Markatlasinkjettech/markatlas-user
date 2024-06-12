@@ -21,7 +21,7 @@ const Login = () => {
       const user = userCredential.user;
       
       // Check if the user's email matches the admin email
-      if (user.email === 'admin@aitgaint.com') {
+      if (user.email === 'admin@aitgaint.com'||'admin@aitgiant.com') {
         // User is an admin
         navigate('/Dashboard');
       } else {
