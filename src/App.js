@@ -18,6 +18,9 @@ import PrivateRoute from './components/PrivateRoute';
 import EditCourseForm from './components/EditCourseForm';
 import FloatingToolbar from './components/FloatingToolbar';
 import TextEditorPopup from './components/TextEditorPopup';
+
+
+import MainCoursePage from './components/MainCoursePage';
 function App() {
   return (
     <Router>
@@ -25,8 +28,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route element={<PrivateRoute />}>
           <Route path="/Dashboard" element={<AdminDashboard />} />
-          <Route path="/DownloadPage" element={<DownloadPage />} />
           <Route path="/CourseForm" element={<AddCourseForm />} />
+          <Route path="/ MainCoursePage" element={< MainCoursePage />} />
           <Route path="/AddUsers" element={<AddUsers />} />
           <Route path="/BlogForm" element={<BlogForm />} />
           <Route path="/MoreAddForm" element={<MoreAddForm />} />
@@ -34,7 +37,7 @@ function App() {
           <Route path="/EditCourseForm/:courseid" element={<EditCourseForm />} />
           <Route path="/FloatingToolbar" element={<FloatingToolbar />} />
           <Route path="/TextEditorPopup" element={<TextEditorPopup/>}/>
-          
+          <Route path="/DownloadPage" element={<DownloadPage/>}/>
           <Route path="/usermanagement" element={<UserManagement />} />
           <Route path="/manage-subcourses/:courseId" element={<ManageSubcourses />} />
           <Route path="/BlogManagement" element={<BlogManagement />} />
