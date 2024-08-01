@@ -17,7 +17,7 @@ const AdminDashboard = () => {
     const fetchData = async () => {
       try {
         const userSnapshot = await getDocs(collection(db, 'users'));
-        const courseSnapshot = await getDocs(collection(db, 'courses'));
+        const courseSnapshot = await getDocs(collection(db, 'maincourse'));
         const blogSnapshot = await getDocs(collection(db, 'blogs'));
         const moreAddSnapshot = await getDocs(collection(db, 'moreadd'));
         setTotalUsers(userSnapshot.size);
@@ -70,7 +70,7 @@ const AdminDashboard = () => {
             icon={<FaBook className="text-4xl" />}
             title="Total Courses"
             count={totalCourses}
-            onClick={() => navigate('/courseform')}
+            onClick={() => navigate('/MainCourseManagement')}
             color="bg-green-500"
           />
           <DashboardCard

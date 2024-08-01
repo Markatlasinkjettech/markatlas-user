@@ -4,6 +4,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../firebase';
 import { Modal, Button, Form, Spinner, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 import AddCourseForm from './AddCourseForm';
 import './MainCoursePage.css';
 
@@ -16,6 +17,7 @@ const MainCoursePage = () => {
   const [selectedSubcourses, setSelectedSubcourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchSubcourses();
@@ -107,9 +109,22 @@ const MainCoursePage = () => {
     fetchSubcourses(); // Refresh subcourses list after closing modal
   };
 
+  const redirectToMainCourseManagement = () => {
+    navigate('/MainCourseManagement');
+  };
+
+  const redirectToSubcourseManagement = () => {
+    navigate('/EditSubcoursesForm');
+  };
+
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Add Main Course</h2>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2>Add Main Course</h2>
+        <Button variant="info" onClick={redirectToMainCourseManagement}>
+          Main Course Management
+        </Button>
+      </div>
       {error && (
         <div className="alert alert-danger" role="alert">
           {error}
@@ -136,7 +151,12 @@ const MainCoursePage = () => {
         </Button>
       </Form>
 
-      <h3 className="mt-4">Available Subcourses</h3>
+      <div className="d-flex justify-content-between align-items-center mt-4">
+        <h3>Available Subcourses</h3>
+        <Button variant="info" onClick={redirectToSubcourseManagement}>
+          Subcourse Management
+        </Button>
+      </div>
       {loading ? (
         <div className="d-flex justify-content-center align-items-center">
           <Spinner animation="border" />

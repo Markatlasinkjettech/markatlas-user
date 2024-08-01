@@ -18,7 +18,8 @@ import PrivateRoute from './components/PrivateRoute';
 import EditCourseForm from './components/EditCourseForm';
 import FloatingToolbar from './components/FloatingToolbar';
 import TextEditorPopup from './components/TextEditorPopup';
-
+import MainCourseManagement from './components/MainCourseManagement';
+import EditSubcoursesForm from './components/EditSubcoursesForm';
 
 import MainCoursePage from './components/MainCoursePage';
 function App() {
@@ -30,6 +31,8 @@ function App() {
           <Route path="/Dashboard" element={<AdminDashboard />} />
           <Route path="/CourseForm" element={<AddCourseForm />} />
           <Route path="/ MainCoursePage" element={< MainCoursePage />} />
+          <Route path="/EditSubcoursesForm" element={< EditSubcoursesForm />} />
+          <Route path="/MainCourseManagement" element={<MainCourseManagement/>} />
           <Route path="/AddUsers" element={<AddUsers />} />
           <Route path="/BlogForm" element={<BlogForm />} />
           <Route path="/MoreAddForm" element={<MoreAddForm />} />

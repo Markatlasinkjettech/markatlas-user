@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { useNavigate } from 'react-router-dom';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -13,7 +14,6 @@ const firebaseConfig = {
   appId: "1:568729903010:web:5e85a998503b1054f9dcfb",
   measurementId: "G-Z5844EFCH1"
 };
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -27,6 +27,7 @@ const AddCourseForm = () => {
   const [alertMessage, setAlertMessage] = useState('');
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const uploading = subCourses.some(subCourse =>
@@ -249,7 +250,7 @@ const AddCourseForm = () => {
               />
               <input
                 type="text"
-                placeholder={`Video URL for Topic ${topicIndex + 1}`}
+                placeholder={`Topic ${topicIndex + 1} Video URL`}
                 className="w-full border border-gray-300 rounded p-2"
                 value={topic.videoUrl}
                 onChange={(e) => {
@@ -260,7 +261,7 @@ const AddCourseForm = () => {
                 required
               />
               <button
-                className="bg-red-500 text-white px-4 py-2 rounded mt-2"
+                className="bg-red-500 text-white px-4 py-2 mt-2 rounded"
                 onClick={() => handleRemoveTopic(index, topicIndex)}
               >
                 Remove Topic
@@ -268,7 +269,7 @@ const AddCourseForm = () => {
             </div>
           ))}
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded mt-2"
+            className="bg-blue-500 text-white px-4 py-2 rounded"
             onClick={() => handleAddTopic(index)}
           >
             Add Topic
@@ -284,65 +285,55 @@ const AddCourseForm = () => {
 
   const renderStepThree = () => (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Step 3: Confirm and Submit</h2>
-      <h3 className="text-lg font-semibold mb-2">Sub Courses:</h3>
-      <ul className="mb-4">
-        {subCourses.map((subCourse, index) => (
-          <li key={index}>
-            <strong>{subCourse.name}</strong>: {subCourse.description}
-          </li>
-        ))}
-      </ul>
-      <h3 className="text-lg font-semibold mb-2">Additional Contents:</h3>
-      <ul className="mb-4">
-        {subCourses.map((subCourse, index) => (
-          <li key={index}>
-            <strong>{subCourse.name}</strong>:
+      <h2 className="text-2xl font-bold mb-4">Step 3: Review & Submit</h2>
+      {subCourses.map((subCourse, index) => (
+        <div key={index} className="mb-4">
+          <h3 className="text-lg font-semibold mb-2">Sub Course {index + 1}</h3>
+          <p><strong>Name:</strong> {subCourse.name}</p>
+          <p><strong>Description:</strong> {subCourse.description}</p>
+          <p><strong>Additional Contents:</strong></p>
+          <ul className="list-disc list-inside">
             {subCourse.additionalContents.map((content, contentIndex) => (
-              <span key={contentIndex}>
-                {content.type}: {content.value}
-              </span>
+              <li key={contentIndex}><strong>{content.type}:</strong> {content.value}</li>
             ))}
-          </li>
-        ))}
-      </ul>
-      <h3 className="text-lg font-semibold mb-2">Topics:</h3>
-      <ul className="mb-4">
-        {subCourses.map((subCourse, index) => (
-          <li key={index}>
-            <strong>{subCourse.name}</strong>:
+          </ul>
+          <p><strong>Topics:</strong></p>
+          <ul className="list-disc list-inside">
             {subCourse.topics.map((topic, topicIndex) => (
-              <span key={topicIndex}>
-                {topic.name}: {topic.videoUrl}
-              </span>
+              <li key={topicIndex}><strong>{topic.name}:</strong> {topic.videoUrl}</li>
             ))}
-          </li>
-        ))}
-      </ul>
+          </ul>
+        </div>
+      ))}
       <div className="flex justify-between mt-8">
         <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={handlePreviousStep}>Previous Step</button>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={handleSubmit}>Submit</button>
+        <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );
 
   return (
-    <div className="max-w-xl mx-auto mt-8 p-4 border border-gray-300 rounded">
+    <div className="container mx-auto p-8">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-4xl font-bold">Add Course Form</h1>
+        <button 
+          className="bg-purple-500 text-white px-4 py-2 rounded" 
+          onClick={() => navigate('/EditSubcoursesForm')}
+        >
+          SubCourseManagement
+        </button>
+      </div>
       {showAlert && (
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
-          {alertMessage}
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+          <span className="block sm:inline">{alertMessage}</span>
+          <button onClick={() => setShowAlert(false)} className="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 5.652a1 1 0 0 0-1.415 0L10 8.586 7.066 5.652a1 1 0 0 0-1.415 1.415L8.586 10l-2.935 2.934a1 1 0 1 0 1.415 1.415L10 11.414l2.934 2.935a1 1 0 0 0 1.415-1.415L11.414 10l2.935-2.934a1 1 0 0 0 0-1.414z"/></svg>
+          </button>
         </div>
       )}
       {currentStep === 1 && renderStepOne()}
       {currentStep === 2 && renderStepTwo()}
       {currentStep === 3 && renderStepThree()}
-      {isUploading && (
-        <div className="bg-gray-800 bg-opacity-50 fixed top-0 left-0 w-full h-full flex items-center justify-center">
-          <div className="bg-white p-4 rounded">
-            <p>Uploading files... {uploadProgress}%</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
