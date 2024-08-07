@@ -30,14 +30,9 @@ const Navbar = () => {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <NavLink to="/Dashboard">Dashboard</NavLink>
-                <NavLink to="/CourseForm"> Sub Courses</NavLink>
-                <NavLink to="/ MainCoursePage">Course</NavLink>
-                <NavLink to="/AddUsers">Users</NavLink>
-                <NavLink to="/BlogForm">Blog</NavLink>
-                <NavLink to="/MoreAddForm">More</NavLink>
-                <NavLink to="/MainCourseManagement">MCM</NavLink>
-                <NavLink to="/EditSubcoursesForm">SCM</NavLink>
+                <NavLink to="/AddJob">AddJob</NavLink>
+                <NavLink to="/AddBlog">AddBlogs</NavLink>
+
               </div>
             </div>
           </div>
@@ -66,24 +61,14 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 sticky space-y-1 sm:px-3">
-            <NavLinkMobile to="/Dashboard" onClick={toggleMenu}>
-              Dashboard
+            <NavLinkMobile to="/AddJob" onClick={toggleMenu}>
+              AddJob
             </NavLinkMobile>
-            <NavLinkMobile to="/CourseForm" onClick={toggleMenu}>
-              Courses
+            <NavLinkMobile to="/AddBlog" onClick={toggleMenu}>
+              AddBlogs
             </NavLinkMobile>
-            <NavLinkMobile to="/AddUsers" onClick={toggleMenu}>
-              Users
-            </NavLinkMobile>
-            <NavLinkMobile to="/MainCoursePage" onClick={toggleMenu}>
-              Course
-            </NavLinkMobile>
-            <NavLinkMobile to="/BlogForm" onClick={toggleMenu}>
-              Blog
-            </NavLinkMobile>
-            <NavLinkMobile to="/MoreAddForm" onClick={toggleMenu}>
-              More
-            </NavLinkMobile>
+            
+           
             {/* Logout button for mobile view */}
             <div className="px-2 pt-2 pb-3">
               <button

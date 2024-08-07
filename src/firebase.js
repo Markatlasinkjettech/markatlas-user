@@ -8,13 +8,13 @@ import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyA4qjcP40hgzx-gWKqVB6c9h9OKpecZobw",
-    authDomain: "lms-1-36b1f.firebaseapp.com",
-    projectId: "lms-1-36b1f",
-    storageBucket: "lms-1-36b1f.appspot.com",
-    messagingSenderId: "568729903010",
-    appId: "1:568729903010:web:5e85a998503b1054f9dcfb",
-    measurementId: "G-Z5844EFCH1"
+    apiKey: "AIzaSyDaq8_4hGbQFfqsHzrgZVv4zCB_WC-kq2M",
+    authDomain: "markatlas-51d56.firebaseapp.com",
+    projectId: "markatlas-51d56",
+    storageBucket: "markatlas-51d56.appspot.com",
+    messagingSenderId: "404314687009",
+    appId: "1:404314687009:web:f06ec2a8457544e6e50560",
+    measurementId: "G-68KBS80LKB"
   };
 
 // Initialize Firebase

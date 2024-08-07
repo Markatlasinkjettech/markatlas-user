@@ -21,9 +21,9 @@ const Login = () => {
       const user = userCredential.user;
       
       // Check if the user's email matches the admin email
-      if (user.email === 'admin@aitgaint.com'||'admin@aitgiant.com') {
+      if (user.email === 'admin@markatlas.com') {
         // User is an admin
-        navigate('/Dashboard');
+        navigate('/AddJob');
       } else {
         // User is not an admin
         throw new Error('Only for admin');

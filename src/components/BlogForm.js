@@ -2,26 +2,12 @@ import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import { Editor } from '@tinymce/tinymce-react';
 import Modal from 'react-modal';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA4qjcP40hgzx-gWKqVB6c9h9OKpecZobw",
-  authDomain: "lms-1-36b1f.firebaseapp.com",
-  projectId: "lms-1-36b1f",
-  storageBucket: "lms-1-36b1f.appspot.com",
-  messagingSenderId: "568729903010",
-  appId: "1:568729903010:web:5e85a998503b1054f9dcfb",
-  measurementId: "G-Z5844EFCH1"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const storage = getStorage(app);
+import {db,storage,app} from '../firebase';
 
 const BlogForm = () => {
   const [title, setTitle] = useState('');
@@ -137,14 +123,12 @@ const BlogForm = () => {
             Post Blog
           </button>
           <Link
-            to="/dashboard"
+            to="/AddJob"
             className="block w-full text-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-2"
           >
             Back
           </Link>
-          <Link to="/blogmanagement" className="block w-full text-center text-blue-500 hover:underline py-2 mt-2">
-            Go to Blog Management
-          </Link>
+          
         </form>
       </div>
       <ToastContainer />
@@ -162,12 +146,26 @@ const BlogForm = () => {
             <h2 className="text-2xl font-bold italic text-gray-800">Edit Content</h2>
           </div>
           <div className="flex-grow overflow-auto p-4">
-            <ReactQuill
-              theme="snow"
+            <Editor
+              apiKey="8395dp0vtkf3wdr9yxcxwpybamtdprlaugo08ipr59kn9v4j"
               value={content}
-              onChange={handleContentChange}
-              className="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm h-full"
-              style={{ minHeight: '300px' }}
+              init={{
+                height: 500,
+                menubar: false,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help',
+                    'lists'
+                  ],
+                  toolbar: 'undo redo | formatselect | bold italic underline strikethrough | \
+                            alignleft aligncenter alignright alignjustify | \
+                            bullist numlist | removeformat | help',
+                  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
+                  toolbar_mode: 'sliding',
+                  menubar: 'file edit view insert format tools table help',
+              }}
+              onEditorChange={handleContentChange}
             />
           </div>
           <div className="p-4 border-t border-gray-300 flex justify-end">
