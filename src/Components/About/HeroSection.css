@@ -1,0 +1,36 @@
+/* HeroSection.css */
+
+/* Background Overlay */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.05), /* Very light grey for subtle grid */
+    rgba(0, 0, 0, 0.05) 10px,
+    rgba(0, 0, 0, 0.1) 10px,
+    rgba(0, 0, 0, 0.1) 20px
+  );
+  background-size: 20px 20px; /* Grid size */
+  opacity: 0.2; /* Very subtle overlay */
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Simple fade-in animation for components */
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease-out;
+}

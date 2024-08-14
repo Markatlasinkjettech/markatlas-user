@@ -1,0 +1,31 @@
+.join-team-banner {
+    position: relative;
+  }
+  
+  .animated-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      rgba(249, 115, 22, 0.7) 0%,
+      rgba(138, 181, 245, 0.7) 50%,
+      rgba(250, 225, 208, 0.7) 100%
+    );
+    background-size: 200% 100%;
+    animation: gradientMove 5s linear infinite;
+  }
+  
+  @keyframes gradientMove {
+    0% {
+      background-position: 100% 0;
+    }
+    50% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }

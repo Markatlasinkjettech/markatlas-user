@@ -1,0 +1,89 @@
+/* BlogSection.css */
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Keyframes for scale-up animation */
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Keyframes for shadow pulse animation */
+  @keyframes shadowPulse {
+    0% {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  /* Blog section styling */
+  .blog-section {
+    background-color: white; /* Light gray background */
+    padding: 2rem; /* Increased padding */
+  }
+  
+  /* Blog post styling */
+  .blog-post {
+    background: #ffffff; /* White background for blog post */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    animation: scaleUp 0.5s ease-out;
+  }
+  
+  .blog-post:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    animation: shadowPulse 1s infinite; /* Pulse effect on hover */
+  }
+  
+  .blog-image {
+    height: 200px; /* Adjust based on design */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .blog-content {
+    padding: 1rem;
+  }
+  
+  .blog-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333; /* Dark text color */
+  }
+  
+  .blog-description {
+    color: #666; /* Lighter text color */
+  }
+  
+  /* Fade-in animation */
+  .animate-fadeIn {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  

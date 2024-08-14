@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  import { initializeApp } from "firebase/app";
+=======
+import { initializeApp } from "firebase/app";
+>>>>>>> master
 //import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore"; // Import getFirestore
