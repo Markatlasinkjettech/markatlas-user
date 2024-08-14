@@ -1,0 +1,134 @@
+/* About.css */
+
+.features-container {
+  text-align: center;
+  padding: 40px 20px; /* Adjusted padding for better spacing */
+  background-color: white; /* Light background for contrast */
+}
+
+.about-title {
+  font-size: 3rem; /* Larger font size for the title */
+  color: #f97316; /* Orange color for emphasis */
+  margin-bottom: 1.5rem; /* Adjusted margin for spacing */
+  font-weight: bold;
+  animation: slideDown 0.5s ease-in-out;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-areas:
+    "mission mission"
+    "expertise clients"
+    "more more";
+  grid-gap: 20px; /* Increased gap for better separation */
+  max-width: 1200px; /* Limiting maximum width for better alignment */
+  margin: 0 auto; /* Centering the grid */
+}
+
+.feature {
+  background: white;
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px; /* Adequate padding for content */
+  /* box-shadow: 0 4px 8px rgba(247, 241, 241, 0.1); Subtle shadow for depth */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.feature:hover {
+  transform: translateY(-10px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.feature.yellow {
+  background-color: #fffbea; /* Light yellow background */
+}
+
+.feature.blue {
+  background-color: #e0f7fa; /* Light blue background */
+}
+
+.feature.purple {
+  background-color: #f3e5f5; /* Light purple background */
+}
+
+.feature.green {
+  background-color: #e8f5e9; /* Light green background */
+}
+
+.feature .content h3 {
+  font-size: 1.5rem; /* Larger font size for headings */
+  margin-bottom: 10px; /* Space below the heading */
+  font-weight: bold;
+  color: #333; /* Darker color for readability */
+}
+
+.feature .content p {
+  font-size: 1rem; /* Standard font size for text */
+  color: #555; /* Slightly lighter text color */
+}
+
+.feature .icon {
+  font-size: 2rem; /* Larger icon for better visibility */
+  margin-top: 10px; /* Space above the icon */
+  color: #f97316; /* Icon color matching the title */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2rem; /* Decrease font size for mobile */
+  }
+
+  .features-grid {
+    grid-template-areas:
+      "mission"
+      "expertise"
+      "clients"
+      "more";
+    grid-gap: 10px; /* Decrease gap for mobile */
+  }
+
+  .feature {
+    padding: 15px; /* Decrease padding for mobile */
+  }
+
+  .feature .content h3 {
+    font-size: 1.25rem; /* Decrease font size for mobile */
+  }
+
+  .feature .content p {
+    font-size: 0.875rem; /* Decrease font size for mobile */
+  }
+
+  .feature .icon {
+    font-size: 1.5rem; /* Decrease icon size for mobile */
+  }
+}
